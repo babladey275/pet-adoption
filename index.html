@@ -1,14 +1,75 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Peddy</title>
     <!-- daisyUI CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    
-</body>
+    <!-- font awesome cdn -->
+    <script src="https://kit.fontawesome.com/7337456c0d.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header class="w-11/12 mx-auto">
+      <div class="navbar bg-base-100">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="0"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-gray-600"
+            >
+              <li><a>Home</a></li>
+              <li><a>Shop</a></li>
+              <li><a>Contact</a></li>
+            </ul>
+          </div>
+          <div class="flex justify-center items-center gap-2 ml-4 md:ml-0">
+            <img class="h-4 w-5" src="images/logo.webp" alt="">
+            <h2 class="text-[#131313] font-bold text-2xl">Peddy</h2>
+          </div>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1 text-gray-600">
+            <li><a>Home</a></li>
+            <li><a>Shop</a></li>
+            <li><a>Contact</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end">
+          <a class="border-2 rounded-full"><i class="fa-regular fa-user p-2 text-gray-500"></i></a>
+        </div>
+      </div>
+      <!-- banner -->
+       <section>
+        <div class="w-2/3 mx-auto flex flex-col justify-center items-center text-center mt-12 space-y-6">
+            <h4 class="text-2xl font-bold text-gray-500">Bringing Families Together 🔥</h4>
+            <h1 class="font-bold text-7xl text-[#131313]">Your Path to Adoption <br>Starts Here</h1>
+            <p class="text-[#131313] pb-4"> Explore our vibrant selection of lovable animals waiting for their forever homes. Discover their stories, connect with furry friends, and start your journey to companionship today!</p>
+            <a href="" class="btn bg-[#0E7A81] text-white">View More</a>
+            <img class="pt-8" src="images/pet.webp" alt="">
+        </div>
+       </section>
+    </header>
+  </body>
 </html>
