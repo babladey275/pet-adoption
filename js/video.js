@@ -15,12 +15,32 @@ const loadAllPets = async() => {
 
 }
 
+const removeActiveClass = () => {
+    const buttons = document.getElementsByClassName("category-btn");
+    for(const button of buttons){
+        button.classList.remove("bg-activeBg", "border-activeBorder", "rounded-full");
+    }
+};
+
+const loadCategoryPet = (petName) => {
+    fetch(`https://openapi.programming-hero.com/api/peddy/category/${petName}`)
+    .then(res => res.json())
+    .then(data => {
+        removeActiveClass();
+        const activeBtn = document.getElementById(`btn-${petName}`);
+        activeBtn.classList.add("bg-activeBg", "border-activeBorder", "rounded-full");
+        displayPets(data.data);
+    })
+    .catch(error => console.log(error));
+}
+
+
 const displayCategories = (categories) => {
     const categoryContainer = document.getElementById("categories");
     categories.forEach(item => {
         const buttonContainer = document.createElement("div");
         buttonContainer.innerHTML = `
-        <button class="flex justify-center items-center font-bold px-10 py-3 border gap-3"><img class="w-10 h-10" src="${item.category_icon}"> ${item.category}</button>
+        <button id="btn-${item.category}" class="category-btn flex justify-center items-center font-bold px-10 py-3 border gap-3" onclick="loadCategoryPet('${item.category}')"><img class="w-10 h-10" src="${item.category_icon}"> ${item.category}</button>
         `;
         categoryContainer.append(buttonContainer);
     });
@@ -28,6 +48,21 @@ const displayCategories = (categories) => {
 
 const displayPets = (pets) => {
     const petContainer = document.getElementById("pets");
+    petContainer.innerHTML = "";
+
+    if(!pets.length){
+        petContainer.classList.remove('grid');
+        petContainer.innerHTML = `
+        <div class="min-h-[400px] w-full flex flex-col justify-center items-center gap-5">
+            <img src="images/error.webp" alt="">
+            <h2 class="font-bold text-center text-xl">No content here in this category</h2>
+        </div>
+        `;
+      return;
+    }
+    else{
+        petContainer.classList.add('grid');
+    }
 
     pets.forEach(pet => {
         const card = document.createElement("div");
