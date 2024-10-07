@@ -51,7 +51,6 @@ const loadDetails = async (petId) => {
     const res = await fetch(uri);
     const data = await res.json();
     displayDetails(data.petData)
-
 }
 
 const displayDetails = (petData) => {
@@ -80,6 +79,25 @@ const displayDetails = (petData) => {
     `;
 
     document.getElementById('customModal').showModal();
+}
+
+const loadLikeImg = async (petId) => {
+    const uri = `https://openapi.programming-hero.com/api/peddy/pet/${petId}`;
+    const res = await fetch(uri);
+    const data = await res.json();
+    displayLikeImg(data.petData)
+}
+
+const displayLikeImg = (petData) => {
+    const likeImgContainer = document.getElementById('like-img');
+
+    const card = document.createElement("div");
+    card.classList = "card border p-2"
+    card.innerHTML = `
+    <img class="rounded-lg h-full w-full object-cover" src="${petData.image}">
+    `;
+
+    likeImgContainer.append(card);
 }
 
 const displayPets = (pets) => {
@@ -112,7 +130,7 @@ const displayPets = (pets) => {
         />
       </figure>
       <div class="p-5">
-        <h2 class="font-bold font-inter text-xl">${pet.pet_name}</h2>
+        <h2 class="font-bold font-inter text-xl pb-3">${pet.pet_name}</h2>
         <div class="font-lato text-gray-500">
         <p><i class="fa-solid fa-shield-cat"></i> Breed: ${pet.breed ? pet.breed : "Not available"}</p>
         <p><i class="fa-regular fa-calendar"></i> Birth: ${pet.date_of_birth ? pet.date_of_birth : "Not available"}</p>
@@ -120,7 +138,7 @@ const displayPets = (pets) => {
         <p>$ Price: ${pet.price ? pet.price : "Not available"}</p>
         </div>
         <div class="flex justify-between mt-6">
-        <button class="btn btn-sm bg-base-100 border"><i class="fa-solid fa-thumbs-up"></i></button>
+        <button onclick="loadLikeImg(${pet.petId})" class="btn btn-sm bg-base-100 border"><i class="fa-solid fa-thumbs-up"></i></button>
         <button class="btn btn-sm bg-base-100 border text-[#0E7A81] font-bold">Adopt</button>
         <button onclick="loadDetails(${pet.petId})" class="btn btn-sm bg-base-100 border text-[#0E7A81] font-bold">Details</button>
         </div>
