@@ -40,10 +40,46 @@ const displayCategories = (categories) => {
     categories.forEach(item => {
         const buttonContainer = document.createElement("div");
         buttonContainer.innerHTML = `
-        <button id="btn-${item.category}" class="category-btn flex justify-center items-center font-bold px-10 py-3 border gap-3" onclick="loadCategoryPet('${item.category}')"><img class="w-10 h-10" src="${item.category_icon}"> ${item.category}</button>
+        <button id="btn-${item.category}" class="category-btn flex justify-center items-center font-bold px-12 py-3 border gap-3" onclick="loadCategoryPet('${item.category}')"><img class="w-10 h-10" src="${item.category_icon}"> ${item.category}</button>
         `;
         categoryContainer.append(buttonContainer);
     });
+}
+
+const loadDetails = async (petId) => {
+    const uri = `https://openapi.programming-hero.com/api/peddy/pet/${petId}`;
+    const res = await fetch(uri);
+    const data = await res.json();
+    displayDetails(data.petData)
+
+}
+
+const displayDetails = (petData) => {
+    const detailContainer = document.getElementById("modal-content");
+
+    detailContainer.innerHTML = `
+    <img class="rounded-xl h-full w-full object-cover" src="${petData.image}">
+    <div class="">
+     <h2 class="font-bold font-inter text-xl py-3">${petData.pet_name}</h2>
+        <div class="flex gap-10 font-lato text-xs text-gray-500">
+        <div>
+        <p><i class="fa-solid fa-shield-cat"></i> Breed: ${petData.breed ? petData.breed : "Not available"}</p>
+        <p><i class="fa-solid fa-mercury"></i> Gender: ${petData.gender ? petData.gender : "Not available"}</p>
+        <p><i class="fa-solid fa-mercury"></i> Gender: ${petData.vaccinated_status ? petData.vaccinated_status : "Not available"}</p>
+        </div>
+        <div>
+        <p><i class="fa-regular fa-calendar"></i> Birth: ${petData.date_of_birth ? petData.date_of_birth : "Not available"}</p>
+        <p>$ Price: ${petData.price ? petData.price : "Not available"}</p>
+        </div>
+        </div>
+        <div class="font-inter">
+        <h2 class="font-bold text-[16px] py-3">Details Information</h2>
+        <p class="text-gray-500 text-xs">${petData.pet_details}</p>
+        </div>
+    </div
+    `;
+
+    document.getElementById('customModal').showModal();
 }
 
 const displayPets = (pets) => {
@@ -53,9 +89,9 @@ const displayPets = (pets) => {
     if(!pets.length){
         petContainer.classList.remove('grid');
         petContainer.innerHTML = `
-        <div class="min-h-[400px] w-full flex flex-col justify-center items-center gap-5">
+        <div class="min-h-[400px] w-full bg-gray-100 rounded-xl flex flex-col justify-center items-center gap-5">
             <img src="images/error.webp" alt="">
-            <h2 class="font-bold text-center text-xl">No content here in this category</h2>
+            <h2 class="font-bold font-inter text-center text-2xl">No Information Available</h2>
         </div>
         `;
       return;
@@ -82,6 +118,11 @@ const displayPets = (pets) => {
         <p><i class="fa-regular fa-calendar"></i> Birth: ${pet.date_of_birth ? pet.date_of_birth : "Not available"}</p>
         <p><i class="fa-solid fa-mercury"></i> Gender: ${pet.gender ? pet.gender : "Not available"}</p>
         <p>$ Price: ${pet.price ? pet.price : "Not available"}</p>
+        </div>
+        <div class="flex justify-between mt-6">
+        <button class="btn btn-sm bg-base-100 border"><i class="fa-solid fa-thumbs-up"></i></button>
+        <button class="btn btn-sm bg-base-100 border text-[#0E7A81] font-bold">Adopt</button>
+        <button onclick="loadDetails(${pet.petId})" class="btn btn-sm bg-base-100 border text-[#0E7A81] font-bold">Details</button>
         </div>
       </div>
         `;

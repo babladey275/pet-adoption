@@ -137,10 +137,46 @@
         <nav id="categories" class="py-3 flex justify-between font-inter"></nav>
       </section>
       <section>
-        <div id="pets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        <div class="font-lato flex justify-between items-center my-10">
+          <h2 class="text-2xl font-extrabold">Best Deal For You</h2>
+          <button class="bg-[#0E7A81] text-white px-5 py-2 rounded-lg">
+            Sort by Price
+          </button>
+        </div>
+      </section>
+      <section>
+        <div class="flex justify-between gap-4 mt-8">
+          <div class="w-[75%]">
+            <div
+              id="pets"
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            ></div>
+          </div>
+          <div class="w-[25%] min-h-0 border-2 rounded-xl">
+            <div class="p-5"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- details modal -->
+      <section>
+        <!-- Open the modal using ID.showModal() method -->
+        <button class="btn hidden" onclick="customModal.showModal()">
+          open modal
+        </button>
+        <dialog id="customModal" class="modal">
+          <div class="modal-box">
+            <div id="modal-content"></div>
+            <div class="modal-action">
+              <form method="dialog" class="w-full flex items-center">
+                <button class="w-full btn font-bold text-[#0E7A81] bg-activeBg rounded-xl">Cancel</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </section>
     </main>
-    <footer class="bg-[#131313] text-whitem font-lato">
+    <footer class="bg-[#131313] text-white mt-6 font-lato">
       <section
         class="footer py-20 w-11/12 mx-auto flex flex-col md:flex-row justify-between pl-16 md:pl-0"
       >
@@ -215,7 +251,7 @@
                   src="https://img.freepik.com/free-vector/new-2023-twitter-logo-x-icon-design_1017-45418.jpg?size=338&ext=jpg&ga=GA1.1.1819120589.1728086400&semt=ais_hybrid"
                   alt=""
                 />
-              </div>  
+              </div>
               <img src="images/icons8-youtube-48.png" alt="" />
               <img src="images/icons8-instagram-48.png" alt="" />
             </div>
@@ -223,7 +259,6 @@
         </nav>
       </section>
     </footer>
-
 
     <script src="js/video.js"></script>
   </body>
