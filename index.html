@@ -169,11 +169,37 @@
             <div id="modal-content"></div>
             <div class="modal-action">
               <form method="dialog" class="w-full flex items-center">
-                <button class="w-full btn font-bold text-[#0E7A81] bg-activeBg rounded-xl">Cancel</button>
+                <button
+                  class="w-full btn font-bold text-[#0E7A81] bg-activeBg rounded-xl"
+                >
+                  Cancel
+                </button>
               </form>
             </div>
           </div>
         </dialog>
+      </section>
+
+      <!-- congrats modal -->
+      <section>
+        <dialog id="adoptModal" class="modal">
+          <div class="modal-box flex flex-col justify-center items-center py-6 pb-16">
+            <div class="space-y-4 pb-5 flex flex-col justify-center items-center text-center">
+              <img src="https://img.icons8.com/?size=96&id=q6BlPrJZmxHV&format=png" alt="">
+              <h2 class="text-4xl font-bold">Congrats!</h2>
+              <p class="text-xl text-gray-600">
+                Adoption process is start for your pet.
+              </p>
+            </div>
+            <div id="countdown" class="text-4xl font-bold"></div>
+          </div>
+        </dialog>
+      </section>
+      <!-- spinner -->
+      <section>
+        <div id="spinner" class="hidden">
+          <span class="loading loading-bars loading-lg"></span>
+        </div>
       </section>
     </main>
     <footer class="bg-[#131313] text-white mt-6 font-lato">
