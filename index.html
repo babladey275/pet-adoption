@@ -99,7 +99,7 @@
       <!-- banner -->
       <section>
         <div
-          class="w-2/3 mx-auto flex flex-col justify-center items-center text-center mt-12 space-y-6"
+          class="w-full md:w-2/3 mx-auto flex flex-col justify-center items-center text-center mt-12 space-y-6"
         >
           <h4 class="text-2xl font-bold text-gray-500">
             Bringing Families Together 🔥
@@ -119,10 +119,10 @@
         </div>
       </section>
     </header>
-    <main class="w-11/12 mx-auto mt-20">
+    <main class="w-11/12 mx-auto mt-10 md:mt-16">
       <section
         id="adopt-section"
-        class="w-2/4 mx-auto font-lato flex flex-col justify-center items-center text-center space-y-6 mb-12"
+        class="w-full md:w-2/4 mx-auto font-lato flex flex-col justify-center items-center text-center space-y-6 mb-12"
       >
         <h2 class="font-bold text-4xl text-[#131313]">
           Adopt Your Best Friend
@@ -133,8 +133,8 @@
           match today and start your unforgettable adventure together!
         </p>
       </section>
-      <section>
-        <nav id="categories" class="py-3 flex justify-between font-inter"></nav>
+      <section class="">
+        <nav id="categories" class="py-3 pl-20 md:pl-0 flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between font-inter"></nav>
       </section>
       <section>
         <div class="font-lato flex justify-between items-center my-10">
@@ -145,14 +145,14 @@
         </div>
       </section>
       <section>
-        <div class="flex justify-between gap-4 mt-8">
-          <div class="w-[75%]">
+        <div class="flex flex-col md:flex-row justify-between gap-4 mt-8">
+          <div class="md:w-[75%] w-full">
             <div
               id="pets"
               class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
             ></div>
           </div>
-          <div class="w-[25%] min-h-0 border-2 rounded-xl">
+          <div class="md:w-[25%] w-full min-h-24 md:min-h-96 border-2 rounded-xl">
             <div id="like-img" class="p-3 grid grid-cols-2 gap-2"></div>
           </div>
         </div>
@@ -194,12 +194,6 @@
             <div id="countdown" class="text-4xl font-bold"></div>
           </div>
         </dialog>
-      </section>
-      <!-- spinner -->
-      <section>
-        <div id="spinner" class="hidden">
-          <span class="loading loading-bars loading-lg"></span>
-        </div>
       </section>
     </main>
     <footer class="bg-[#131313] text-white mt-6 font-lato">
