@@ -23,8 +23,20 @@ const loadAllPets = async () => {
   setTimeout(() => {
     displayPets(data.pets);
   }, 2000);
-  // displayPets(data.pets);
 };
+
+const handleSorted = async() => {
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/peddy/pets`
+  );
+  const data = await res.json();
+  const sortPet = sortByPrice(data.pets);
+  displayPets(sortPet);
+}
+
+const sortByPrice = (pets) => {
+  return pets.sort((a, b) => b.price - a.price);
+}
 
 const removeActiveClass = () => {
   const buttons = document.getElementsByClassName("category-btn");
@@ -95,7 +107,7 @@ const displayDetails = (petData) => {
         <p><i class="fa-solid fa-mercury"></i> Gender: ${
           petData.gender ? petData.gender : "Not available"
         }</p>
-        <p><i class="fa-solid fa-mercury"></i> Gender: ${
+        <p><i class="fa-solid fa-mercury"></i> Vaccinated status: ${
           petData.vaccinated_status
             ? petData.vaccinated_status
             : "Not available"
@@ -182,11 +194,11 @@ const displayPets = (pets) => {
         <div class="flex justify-between mt-6">
         <button onclick="loadLikeImg(${
           pet.petId
-        })" class="btn btn-sm bg-base-100 border"><i class="fa-solid fa-thumbs-up"></i></button>
-        <button onclick="congratsModal()" class="btn btn-sm bg-base-100 border text-[#0E7A81] font-bold">Adopt</button>
+        })" class="btn btn-sm bg-base-100 border active:border-activeBorder"><i class="fa-solid fa-thumbs-up"></i></button>
+        <button onclick="congratsModal()" class="btn btn-sm bg-base-100 border text-[#0E7A81] font-bold active:bg-[#0E7A81] active:text-white">Adopt</button>
         <button onclick="loadDetails(${
           pet.petId
-        })" class="btn btn-sm bg-base-100 border text-[#0E7A81] font-bold">Details</button>
+        })" class="btn btn-sm bg-base-100 border text-[#0E7A81] active:bg-[#0E7A81] active:text-white font-bold">Details</button>
         </div>
       </div>
         `;
