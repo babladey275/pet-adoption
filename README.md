@@ -7,3 +7,9 @@ The Pet Adoption Platform is a web application designed to connect potential pet
 - **Pet Details Modal**: When the details button is pressed, a modal displays comprehensive information about the pet.
 - **Adopt Button**: Each pet profile included an "Adopt" button that triggers a congratulatory modal upon selection.
 - **Like Button**: Pressing the Like button, user can display their favorite pets in a personalized list.
+
+
+## Used ES6 Feature:
+- Promises
+- Arrow Functions
+- Template Literals
