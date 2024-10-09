@@ -8,7 +8,6 @@ const loadCategories = async () => {
 };
 
 // all pets
-
 const loadAllPets = async () => {
   const petContainer = document.getElementById("pets");
   petContainer.classList.remove("grid");
